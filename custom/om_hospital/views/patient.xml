@@ -12,17 +12,26 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
-                <group>
-                    <field name="name"/>
-                    <field name="age"/>
-                    <field name="gender"/>
-                </group>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="is_child"/>
+                        <field name="age"/>
+                        <field name="gender"/>
+                     </group>
+                </sheet>
+                  <div class="oe_chatter">
+                        <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                        <field name="message_ids"/>
+                    </div>
             </form>
         </field>
     </record>
-        <record id="view_hospital_patient_tree" model="ir.ui.view">
+
+     <record id="view_hospital_patient_tree" model="ir.ui.view">
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
+<!--        <field name="type">tree</field>-->
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
