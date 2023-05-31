@@ -10,8 +10,13 @@
             parent="menu_hospital_root"
             sequence="10"/>
     <menuitem
-            id="menu_paients"
+            id="menu_patients"
             name="patients"
             parent="menu_hospital_operation"
+            sequence="10"/>
+    <menuitem
+            id="menu_hospital_doctors"
+            name="doctors"
+            parent="menu_hospital_root"
             sequence="10"/>
 </odoo>
