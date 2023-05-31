@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
+
     <record id="view_hospital_patient_form" model="ir.ui.view">
         <field name="name">hospital.patient.form</field>
         <field name="model">hospital.patient</field>
@@ -18,20 +18,20 @@
                         <field name="age"/>
                         <field name="gender"/>
                         <field name="capitalized_name"/>
-                     </group>
+                    </group>
                 </sheet>
-                  <div class="oe_chatter">
-                        <field name="message_follower_ids" options="{'open_attachments': True}"/>
-                        <field name="message_ids"/>
-                    </div>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
 
-     <record id="view_hospital_patient_tree" model="ir.ui.view">
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
-<!--        <field name="type">tree</field>-->
+        <!--        <field name="type">tree</field>-->
         <field name="arch" type="xml">
             <tree>
                 <field name="ref"/>
@@ -42,7 +42,7 @@
         </field>
     </record>
 
-     <record id="view_hospital_patient_search" model="ir.ui.view">
+    <record id="view_hospital_patient_search" model="ir.ui.view">
         <field name="name">hospital.patient.search</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
@@ -52,12 +52,16 @@
                 <field name="name"/>
                 <field name="age"/>
                 <field name="gender"/>
-
+<!--                <field name="filter_male" string="Male" domain="[('gender', '=', 'male')]"/>-->
+<!--                <field name="filter_female" string="Female" domain="[('gender', '=', 'female')]"/>-->
+<!--                <field name="filter_others" string="Others" domain="[('gender', '=', 'others')]"/>-->
+<!--                <seperator/>-->
+<!--                <field name="filter_childs" string="Childs" domain="[('is_child', '=', True)]"/>-->
             </search>
         </field>
     </record>
 
-     <record id="action_hospital_patient" model="ir.actions.act_window">
+    <record id="action_hospital_patient" model="ir.actions.act_window">
         <field name="name">Patients</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.patient</field>

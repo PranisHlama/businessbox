@@ -1,9 +1,5 @@
 from importlib.resources import _
-
 from odoo import api, fields, models
-
-
-
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
@@ -14,7 +10,7 @@ class HospitalPatient(models.Model):
     age = fields.Integer(string="Age", tracking=True)
     is_child = fields.Boolean(string="Is Child ?", tracking=True)
     notes = fields.Text(string="Notes", tracking=True)
-    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string="Gender")
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('others', 'Others')], string="Gender", tracking=True)
 
     capitalized_name = fields.Char(string='Capitalized Name', compute='_compute_capitalized_name', store = True)
     ref = fields.Char(string="Reference", default=lambda self: _('New'))
@@ -23,7 +19,6 @@ class HospitalPatient(models.Model):
         for vals in vals_list:
             vals['ref'] = self.env['ir.sequence'].next_by_code('Hospital.patient')
         return super(HospitalPatient, self).create(vals_list)
-
 
     @api.depends('name')
     def _compute_capitalized_name(self):
