@@ -1,5 +1,9 @@
 from odoo import api, fields, models
 
+# <<<<<<< HEAD
+# =======
+
+# >>>>>>> parent of 47fbefb (filter domain)
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _inherit = ['mail.thread']
@@ -11,6 +15,7 @@ class HospitalPatient(models.Model):
     notes = fields.Text(string="Notes", tracking=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('others', 'Others')], string="Gender", tracking=True)
 
+# <<<<<<< HEAD
     capitalized_name = fields.Char(string='Capitalized Name', compute='_compute_capitalized_name', store = True)
     ref = fields.Char(string="Reference", default=lambda self: _('New'))
     @api.model_create_multi
@@ -25,6 +30,8 @@ class HospitalPatient(models.Model):
             self.capitalized_name = self.name.upper()
         else:
             self.capitalized_name = ''
+# =======
+# >>>>>>> parent of 47fbefb (filter domain)
 
 @api.onchange('age')
 def _onchange_age(self):
