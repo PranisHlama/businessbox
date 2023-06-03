@@ -1,12 +1,10 @@
 {
     'name': 'Hospital Management System',
-    'author': 'Odoo Mates',
-    'website': 'www.odoo.com',
-    'summary': 'Odoo 16 development',
-    'depends': ['mail'],
+    'author': 'Pranish Lama',
+    'website' : 'www.odoo.com',
+    'summary' : 'This is a test module',
     'data': [
         'views/menu.xml',
         'views/patient.xml',
-        'security/ir.model.access.csv'
     ]
 }
