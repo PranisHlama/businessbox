@@ -6,5 +6,6 @@
     'data': [
         'views/menu.xml',
         'views/patient.xml',
+        # 'views/doctor.xml'
     ]
 }
