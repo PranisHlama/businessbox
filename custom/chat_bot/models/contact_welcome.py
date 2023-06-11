@@ -1,48 +1,34 @@
 from odoo import api, models
-import openai
-openai.api_key = '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'
+
 
 class Welcome(models.Model):
     _inherit = 'res.partner'
 
+    # Create Method
+    @api.model
+    def create(self, vals):
+        print("Odoo Mates", vals)
+        vals['website'] = 'TEST.com'
+        new_contact = super(Welcome, self).create(vals)
+        return new_contact
 
     # OpenAI message
-    def create_message(self, name):
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt="Write a welcome letter to a new member at a company",
-            max_tokens=100
-        )
-        message = f"Dear {name},\n\n" + response.choices[0].text.strip()
+    def create_message(name):
+        print('create message')
+        message = f"Dear {name},\n\nWelcome to our platform. We are excited to have you on board"
         return message
 
     # WhatsApp
-    def send_message(self, message, phone_no):
-        print(message)
+    def send_message(name, phone_no, email):
+        print('send message')
+        print(name)
         print(phone_no)
-        return True
+        print(email)
 
-    def user_info(self, vals):
+    def user_info(self,vals):
         print("Info done")
         name = vals.get('name', False)
         email = vals.get('email', False)
         phone = vals.get('phone', False)
         self.create_message(name)
         self.send_message(name, phone, email)
-
-    # Create Method
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            message = self.create_message(vals['name'])
-            self.send_message(message, 94857738)
-            new_contact = super(Welcome, self).create(vals)
-            return new_contact
-
-    # def whatsapp(self, vals_list):
-    #     phone = self.create_message(vals['phone'])
-    #     self.send_message(phone, vals['phone'])
-    #     new_contact = super(Welcome, self).create(vals)
-    #     return new_contact
-
-
